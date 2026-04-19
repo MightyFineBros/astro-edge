@@ -1,64 +1,76 @@
 ---
-// This is the frontmatter script area in Astro. 
-// You can import components like a React PleasureBar here later.
+// EDGE - The EmotionOS for Human Connection
 ---
 
 <html lang="en">
-  <<script src="https://cdn.tailwindcss.com"></script>>
+  <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>EDGE | The EmotionOS for Human Connection</title>
+    <title>EDGE | The EmotionOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-neutral-950 text-neutral-50 font-sans antialiased selection:bg-fuchsia-500 selection:text-white">
+  <body class="bg-black text-zinc-100 font-sans antialiased">
     
-    <header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-900">
-      <div class="text-2xl font-bold tracking-widest uppercase">
-        EDGE
-      </div>
-      <nav class="hidden md:flex gap-8 text-sm font-medium text-neutral-400">
-        <a href="#vision" class="hover:text-white transition-colors">Vision</a>
-        <a href="#tech" class="hover:text-white transition-colors">The Tech</a>
-        <a href="#privacy" class="hover:text-white transition-colors">Privacy</a>
+    <header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50 bg-black/80 backdrop-blur-lg border-b border-zinc-900">
+      <div class="text-2xl font-bold tracking-tighter uppercase italic">EDGE</div>
+      <nav class="hidden md:flex gap-10 text-xs font-bold tracking-[0.2em] uppercase text-zinc-500">
+        <a href="#vision" class="hover:text-fuchsia-500 transition-colors">Vision</a>
+        <a href="#tech" class="hover:text-fuchsia-500 transition-colors">The Tech</a>
+        <a href="#privacy" class="hover:text-fuchsia-500 transition-colors">Privacy</a>
       </nav>
-      <button class="px-5 py-2 text-sm font-semibold rounded-full bg-neutral-800 hover:bg-neutral-700 transition-colors">
+      <button class="px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-zinc-800 hover:bg-white hover:text-black transition-all">
         Investor Deck
       </button>
     </header>
 
-    <main class="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
-      
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-fuchsia-600/20 blur-[120px] rounded-full pointer-events-none"></div>
-
-      <div class="relative z-10 max-w-4xl mx-auto text-center mt-20">
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-          The <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">EmotionOS</span> <br /> 
-          for Human Connection.
+    <main class="relative min-h-screen pt-32 px-6">
+      <section class="max-w-5xl mx-auto text-center mb-32">
+        <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
+          THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-cyan-400">EMOTION OS</span> <br /> 
+          FOR HUMAN CONNECTION.
         </h1>
-        
-        <p class="text-lg md:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Decoding physiological signals into real-time guidance for mutual pleasure, empathy, and emotional flow. The missing link isn't desire—it's data.
+        <p class="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          Bridging the millennia-old <span class="text-white italic">Pleasure Gap</span>[cite: 37, 38]. We decode physiological signals into real-time guidance for synchronized intimacy[cite: 5, 14].
         </p>
         
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            class="w-full sm:w-80 px-6 py-4 rounded-full bg-neutral-900 border border-neutral-800 focus:outline-none focus:border-fuchsia-500 transition-colors text-white placeholder-neutral-500"
-          />
-          <button class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white font-bold tracking-wide hover:opacity-90 transition-opacity">
-            Join the Waitlist
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
+          <input type="email" placeholder="access@edge.sex" class="w-full sm:w-80 px-6 py-4 rounded-xl bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-fuchsia-500 transition-colors text-white" />
+          <button class="w-full sm:w-auto px-10 py-4 rounded-xl bg-white text-black font-black uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            Join the Pilot
           </button>
         </div>
-      </div>
 
-      <div class="relative z-10 mt-24 w-full max-w-3xl h-2 bg-neutral-900 rounded-full overflow-hidden">
-        <div class="absolute left-1/2 top-0 h-full w-32 -translate-x-1/2 bg-white/10 rounded-full"></div>
-        <div class="absolute left-[45%] top-0 h-full w-2 bg-fuchsia-500 shadow-[0_0_15px_rgba(217,70,239,0.8)]"></div>
-      </div>
-      <p class="mt-4 text-xs tracking-widest text-neutral-500 uppercase">Locking into the Pleasure Zone</p>
-      
+        <div class="relative w-full max-w-2xl mx-auto h-4 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+            <div class="absolute left-1/2 top-0 h-full w-40 -translate-x-1/2 bg-fuchsia-500/20 blur-sm"></div>
+            <div class="absolute left-[48%] top-0 h-full w-1 bg-white shadow-[0_0_15px_#fff] animate-pulse"></div>
+        </div>
+        <p class="mt-4 text-[10px] tracking-[0.3em] text-zinc-600 uppercase font-bold">Locking into the Pleasure Zone [cite: 49, 56]</p>
+      </section>
+
+      <section id="vision" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 py-24 border-t border-zinc-900">
+        <div>
+            <h2 class="text-3xl font-bold mb-6">The Data-Driven <br/>Movement [cite: 12, 32]</h2>
+            <p class="text-zinc-400 leading-relaxed mb-6">Modern intimacy relies on guesswork. EDGE transforms wearables into an intelligent interface, translating HRV and GSR signals into actionable feedback[cite: 12, 14].</p>
+            <p class="text-zinc-400 leading-relaxed">By quantifying empathy and synchrony, we aim to reshape the architecture of human communication[cite: 33].</p>
+        </div>
+        <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800">
+            <h3 class="text-fuchsia-500 font-bold uppercase tracking-widest text-xs mb-4">Core Mechanic [cite: 18]</h3>
+            <p class="text-2xl font-bold mb-2 text-white">Time in Zone [cite: 18]</p>
+            <p class="text-sm text-zinc-500 leading-relaxed">Quantifying session success by the duration partners sustain peak mutual pleasure states[cite: 18, 56]. Communication becomes obsolete—the data does the talking[cite: 54].</p>
+        </div>
+      </section>
+
+      <section id="privacy" class="max-w-4xl mx-auto py-24 border-t border-zinc-900 text-center">
+        <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-8">Privacy by Design [cite: 24, 55]</h2>
+        <p class="text-3xl md:text-5xl font-bold mb-12 italic text-zinc-200 uppercase tracking-tighter">AES-256 Encryption. <br/>Local Differential Privacy[cite: 23, 55, 56].</p>
+        <p class="text-zinc-500 max-w-2xl mx-auto text-sm leading-relaxed">
+            Only anonymized feature vectors leave the device[cite: 56]. We maintain global regulatory readiness under "wellness communication" standards[cite: 24, 60].
+        </p>
+      </section>
     </main>
 
+    <footer class="py-12 border-t border-zinc-900 text-center text-[10px] text-zinc-700 tracking-[0.2em] uppercase">
+        © 2026 EDGE | The EmotionOS for Human Connection [cite: 20]
+    </footer>
   </body>
 </html>
