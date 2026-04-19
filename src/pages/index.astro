@@ -1,82 +1,945 @@
 ---
-// EDGE - The EmotionOS for Human Connection
+// EDGE — The EmotionOS for Human Connection
+// src/pages/index.astro
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>EDGE | The EmotionOS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-black text-zinc-100 font-sans antialiased selection:bg-fuchsia-500 selection:text-white">
-    
-    <header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50 bg-black/80 backdrop-blur-lg border-b border-zinc-900">
-      <div class="text-2xl font-bold tracking-tighter uppercase italic">EDGE</div>
-      <nav class="hidden md:flex gap-10 text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500">
-        <a href="#vision" class="hover:text-fuchsia-500 transition-colors">Vision</a>
-        <a href="#tech" class="hover:text-fuchsia-500 transition-colors">The Tech</a>
-        <a href="#privacy" class="hover:text-fuchsia-500 transition-colors">Privacy</a>
-      </nav>
-      <button class="px-6 py-2 text-[10px] font-bold uppercase tracking-widest rounded-full border border-zinc-800 hover:bg-white hover:text-black transition-all">
-        Investor Deck
-      </button>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDGE — The EmotionOS for Human Connection</title>
+  <meta name="description" content="We decode physiological signals into real-time guidance for synchronized intimacy. Bridging the Pleasure Gap." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-    <main class="relative min-h-screen pt-32 px-6">
-      
-      <section class="max-w-5xl mx-auto text-center mb-32">
-        <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
-          THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-cyan-400">EMOTION OS</span> <br /> 
-          FOR HUMAN CONNECTION.
-        </h1>
-        <p class="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-          Bridging the millennia-old <span class="text-white italic font-medium text-fuchsia-400">Pleasure Gap</span>. We decode physiological signals into real-time guidance for synchronized intimacy. [cite: 5, 11]
-        </p>
-        
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-24">
-          <input type="email" placeholder="access@edge.sex" class="w-full sm:w-80 px-6 py-4 rounded-xl bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-fuchsia-500 transition-colors text-white placeholder-zinc-600" />
-          <button class="w-full sm:w-auto px-10 py-4 rounded-xl bg-white text-black font-black uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]">
-            Join the Pilot
-          </button>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #080706;
+      --off-white: #F0EDE6;
+      --warm-mid: #8C8279;
+      --warm-faint: #1A1714;
+      --rose:     #D4735A;
+      --rose-dim: #7A3C2A;
+      --rose-glow: rgba(212, 115, 90, 0.18);
+      --gold:     #C4A96A;
+      --border:   rgba(240, 237, 230, 0.08);
+      --border-warm: rgba(240, 237, 230, 0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.6;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .display {
+      font-family: 'Cormorant', serif;
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+    .display-italic {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .mono-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 48px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    header.scrolled {
+      border-color: var(--border);
+      background: rgba(8, 7, 6, 0.88);
+      backdrop-filter: blur(16px);
+    }
+    .logo {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      text-decoration: none;
+    }
+    .logo span { color: var(--rose); }
+
+    nav { display: flex; gap: 40px; }
+    nav a {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--off-white); }
+
+    .btn-outline {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      background: transparent;
+      border: 1px solid var(--border-warm);
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -56%);
+      font-family: 'Cormorant', serif;
+      font-size: clamp(120px, 22vw, 300px);
+      font-weight: 600;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240, 237, 230, 0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.03em;
+    }
+
+    .waveform-wrap {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    #waveCanvas {
+      width: 100%;
+      height: 100%;
+      opacity: 0.35;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--rose);
+    }
+
+    .hero-h1 {
+      font-size: clamp(72px, 10vw, 130px);
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--warm-mid);
+      margin-bottom: 56px;
+      max-width: 640px;
+      line-height: 1.3;
+    }
+    .hero-sub em { color: var(--rose); font-style: normal; }
+
+    .hero-cta {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+    }
+    .hero-input {
+      flex: 1;
+      background: rgba(240, 237, 230, 0.04);
+      border: 1px solid var(--border-warm);
+      border-right: none;
+      padding: 16px 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--off-white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .hero-input::placeholder { color: var(--warm-mid); }
+    .hero-input:focus { border-color: var(--rose); }
+    .btn-rose {
+      background: var(--rose);
+      color: var(--black);
+      border: 1px solid var(--rose);
+      padding: 16px 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-rose:hover { background: transparent; color: var(--rose); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--rose), transparent);
+      animation: drip 2s ease-in-out infinite;
+    }
+    @keyframes drip {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ─── STATS TICKER ─── */
+    .stats-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 48px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+    }
+    .stat {
+      flex: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 0 40px 0 0;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--off-white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--rose); }
+    .stat-label { font-size: 10px; color: var(--warm-mid); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    /* ─── SECTION SHARED ─── */
+    section { padding: 120px 48px; }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 48px;
+      color: var(--rose);
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* ─── VISION ─── */
+    #vision {
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .vision-left {}
+    .vision-h2 {
+      font-size: clamp(48px, 6vw, 80px);
+      margin-bottom: 40px;
+    }
+    .vision-body {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(240, 237, 230, 0.6);
+      margin-bottom: 24px;
+    }
+
+    .vision-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .signal-card {
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .signal-card:hover { border-color: var(--border-warm); }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--rose);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .signal-card:hover::before { transform: scaleY(1); }
+    .signal-card-label { margin-bottom: 8px; }
+    .signal-card-title {
+      font-family: 'Cormorant', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--off-white);
+    }
+    .signal-card-desc {
+      font-family: 'Cormorant', serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--warm-mid);
+      line-height: 1.6;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #tech {
+      border-top: 1px solid var(--border);
+    }
+    .tech-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+    .tech-h2 { font-size: clamp(42px, 5vw, 72px); max-width: 500px; }
+    .tech-aside {
+      font-family: 'Cormorant', serif;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--warm-mid);
+      max-width: 320px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .step {
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      position: relative;
+      background: var(--warm-faint);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .step:hover { background: rgba(212, 115, 90, 0.04); }
+    .step-num {
+      font-family: 'Cormorant', serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: rgba(240, 237, 230, 0.06);
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      line-height: 1;
+    }
+    .step-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .step-icon svg { width: 14px; height: 14px; stroke: var(--rose); fill: none; stroke-width: 1.5; }
+    .step-title {
+      font-family: 'Cormorant', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .step-body {
+      font-family: 'Cormorant', serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--warm-mid);
+      line-height: 1.65;
+    }
+
+    /* ─── PRIVACY ─── */
+    #privacy {
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .privacy-h2 { font-size: clamp(40px, 5vw, 68px); margin-bottom: 32px; }
+    .privacy-body {
+      font-family: 'Cormorant', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--warm-mid);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .privacy-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      border: 1px solid var(--border-warm);
+      padding: 8px 16px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .badge:hover { border-color: var(--rose); color: var(--rose); }
+
+    .privacy-visual {
+      position: relative;
+      height: 400px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .lock-ring {
+      width: 180px;
+      height: 180px;
+      border: 1px solid var(--border-warm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: spin-slow 20s linear infinite;
+    }
+    .lock-ring::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 115, 90, 0.15);
+      animation: spin-slow 12s linear infinite reverse;
+    }
+    .lock-ring::after {
+      content: '';
+      position: absolute;
+      inset: -40px;
+      border-radius: 50%;
+      border: 1px dashed rgba(212, 115, 90, 0.07);
+    }
+    .lock-inner {
+      font-family: 'Cormorant', serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--warm-mid);
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+    .lock-inner strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--off-white);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+    .privacy-orbit {
+      position: absolute;
+      inset: 0;
+    }
+    .orbit-label {
+      position: absolute;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240, 237, 230, 0.25);
+    }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      border-top: 1px solid var(--border);
+      padding: 160px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 115, 90, 0.07) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      font-size: clamp(52px, 8vw, 110px);
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .final-cta p {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--warm-mid);
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .final-cta-form {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-size: 10px;
+      color: var(--warm-mid);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-size: 10px;
+      color: var(--warm-mid);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ─── FADE IN ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      header { padding: 24px; }
+      nav { display: none; }
+      .hero { padding: 0 24px 64px; }
+      .hero-cta { max-width: 100%; }
+      section { padding: 80px 24px; }
+      #vision { grid-template-columns: 1fr; gap: 48px; }
+      .tech-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .tech-aside { text-align: left; }
+      .steps { grid-template-columns: 1fr; }
+      #privacy { grid-template-columns: 1fr; }
+      .privacy-visual { height: 280px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
+      .stats-bar { flex-direction: column; gap: 24px; padding: 32px 24px; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+      .stat:last-child { border-bottom: none; }
+      .final-cta { padding: 100px 24px; }
+      .final-cta-form { max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="/" class="logo">EDG<span>E</span></a>
+    <nav>
+      <a href="#vision">Vision</a>
+      <a href="#tech">Signal</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+    <a href="#" class="btn-outline">Investor Deck</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text">EDGE</div>
+
+    <div class="waveform-wrap">
+      <canvas id="waveCanvas"></canvas>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="mono-label">Pilot Access — 2026</span>
+      </div>
+
+      <h1 class="display hero-h1">
+        The Emotion<br />
+        <em class="display-italic" style="color: var(--rose);">Operating</em><br />
+        System.
+      </h1>
+
+      <p class="hero-sub">
+        Bridging the millennia-old <em>Pleasure Gap</em> —<br />
+        physiological signal decoded into synchronized guidance.
+      </p>
+
+      <div class="hero-cta">
+        <input class="hero-input" type="email" placeholder="your@email.com" />
+        <button class="btn-rose" onclick="handleWaitlist()">Join Pilot</button>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="mono-label" style="writing-mode: vertical-rl; letter-spacing: 0.3em;">Scroll</span>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar fade-up">
+    <div class="stat">
+      <span class="stat-num">57<span>%</span></span>
+      <span class="stat-label">reported pleasure gap in heterosexual partnerships</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">guesswork replaced by real signal</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0</span>
+      <span class="stat-label">raw biometric data leaves your device</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" style="font-size: 24px; letter-spacing: -0.02em;">Real<span style="color:var(--rose);">-</span>Time</span>
+      <span class="stat-label">feedback, no post-session debrief</span>
+    </div>
+  </div>
+
+  <!-- VISION -->
+  <section id="vision">
+    <div class="vision-left fade-up">
+      <div class="section-tag mono-label">The Problem</div>
+      <h2 class="display vision-h2">
+        Modern intimacy<br />
+        <em class="display-italic">runs on guesswork.</em>
+      </h2>
+      <p class="vision-body">
+        Heart Rate Variability. Galvanic Skin Response.
+        Two signals that contain the whole story — and until now,
+        nobody was listening to them together, in real time.
+      </p>
+      <p class="vision-body">
+        EDGE transforms consumer wearables into an intelligent
+        interface. Not a survey. Not a score. A living conversation
+        between bodies, mediated by data.
+      </p>
+    </div>
+
+    <div class="vision-right fade-up" style="transition-delay: 0.15s;">
+      <div class="signal-card">
+        <div class="mono-label signal-card-label">Signal 01 — HRV</div>
+        <div class="signal-card-title">Heart Rate Variability</div>
+        <div class="signal-card-desc">The millisecond oscillation between beats. A window into arousal, anxiety, and emotional presence that the conscious mind cannot fabricate.</div>
+      </div>
+      <div class="signal-card">
+        <div class="mono-label signal-card-label">Signal 02 — GSR</div>
+        <div class="signal-card-title">Galvanic Skin Response</div>
+        <div class="signal-card-desc">Micro-sweat. Sympathetic nervous system activity rendered in microvoltage. The body speaking before the mouth can form words.</div>
+      </div>
+      <div class="signal-card">
+        <div class="mono-label signal-card-label">Signal 03 — Sync</div>
+        <div class="signal-card-title">Physiological Synchrony</div>
+        <div class="signal-card-desc">When two people's autonomic rhythms begin to mirror each other. The quantifiable substrate of what we've always called chemistry.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="tech">
+    <div class="tech-header fade-up">
+      <h2 class="display tech-h2">
+        Three signals.<br />
+        One <em class="display-italic">score.</em>
+      </h2>
+      <p class="tech-aside">
+        "Time in Zone" — the duration partners sustain peak mutual
+        pleasure states, quantified and acted on in real time.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
         </div>
-
-        <div class="relative w-full max-w-2xl mx-auto h-4 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800 shadow-inner">
-            <div class="absolute left-1/2 top-0 h-full w-48 -translate-x-1/2 bg-fuchsia-500/20 blur-md"></div>
-            <div class="absolute left-[48%] top-0 h-full w-1.5 bg-white shadow-[0_0_20px_#fff] animate-pulse"></div>
+        <div class="step-title">Capture</div>
+        <div class="step-body">Pair any HRV-capable wearable. EDGE reads from the device API — no proprietary hardware required. Works day one.</div>
+      </div>
+      <div class="step fade-up" style="transition-delay: 0.1s;">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
         </div>
-        <p class="mt-6 text-[10px] tracking-[0.4em] text-zinc-600 uppercase font-black">Locking into the Pleasure Zone</p>
-      </section>
-
-      <section id="vision" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 py-32 border-t border-zinc-900">
-        <div>
-            <h2 class="text-3xl font-bold mb-8 tracking-tight">The Data-Driven <br/>Movement</h2>
-            <p class="text-zinc-400 leading-relaxed mb-6">Modern intimacy relies on guesswork. EDGE transforms wearables into an intelligent interface, translating HRV and GSR signals into actionable feedback. [cite: 14, 15]</p>
-            <p class="text-zinc-400 leading-relaxed">By quantifying empathy and synchrony, we aim to reshape the architecture of human communication. [cite: 33]</p>
+        <div class="step-title">Decode</div>
+        <div class="step-body">On-device ML maps raw biometrics to autonomic state in under 800ms. No cloud round-trip. No latency that breaks the moment.</div>
+      </div>
+      <div class="step fade-up" style="transition-delay: 0.2s;">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         </div>
-        <div class="bg-zinc-900/40 p-10 rounded-3xl border border-zinc-800 backdrop-blur-sm">
-            <h3 class="text-fuchsia-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-6">Core Mechanic</h3>
-            <p class="text-3xl font-bold mb-4 text-white">Time in Zone</p>
-            <p class="text-zinc-500 leading-relaxed text-sm">
-              Quantifying session success by the duration partners sustain peak mutual pleasure states. Communication becomes obsolete—the data does the talking. [cite: 18, 54]
-            </p>
+        <div class="step-title">Guide</div>
+        <div class="step-body">Haptic pulses and ambient audio cues surface at the right moment — calibrated, never interruptive. Communication without language.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <div class="fade-up">
+      <div class="section-tag mono-label">Privacy by Design</div>
+      <h2 class="display privacy-h2">
+        Your most<br />
+        <em class="display-italic">intimate data</em><br />
+        stays intimate.
+      </h2>
+      <p class="privacy-body">
+        Only anonymized feature vectors leave the device.
+        Raw biometrics never touch our servers. AES-256
+        at rest, local differential privacy on everything that moves.
+      </p>
+      <div class="privacy-badges">
+        <span class="badge">AES-256</span>
+        <span class="badge">On-Device ML</span>
+        <span class="badge">Local Diff. Privacy</span>
+        <span class="badge">GDPR Ready</span>
+        <span class="badge">Zero Raw Data</span>
+      </div>
+    </div>
+
+    <div class="privacy-visual fade-up" style="transition-delay: 0.2s;">
+      <div class="orbit-label" style="top: 12%; left: 50%; transform: translateX(-50%);">Anonymized vectors</div>
+      <div class="orbit-label" style="bottom: 12%; left: 50%; transform: translateX(-50%);">Local processing</div>
+      <div class="orbit-label" style="left: 6%; top: 50%; transform: translateY(-50%);">On-device</div>
+      <div class="orbit-label" style="right: 6%; top: 50%; transform: translateY(-50%);">AES-256</div>
+      <div class="lock-ring">
+        <div class="lock-inner">
+          <strong>Private</strong>
+          by architecture
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section id="privacy" class="max-w-5xl mx-auto py-32 border-t border-zinc-900 text-center">
-        <h2 class="text-[10px] font-black uppercase tracking-[0.6em] text-zinc-700 mb-10">Privacy by Design</h2>
-        <p class="text-3xl md:text-5xl font-black mb-12 italic text-zinc-100 uppercase tracking-tighter leading-tight">
-          AES-256 Encryption. <br/>Local Differential Privacy. [cite: 23, 56]
-        </p>
-        <p class="text-zinc-500 max-w-2xl mx-auto text-sm leading-loose">
-            Only anonymized feature vectors leave the device. We maintain global regulatory readiness under "wellness communication" standards. [cite: 23, 24, 56]
-        </p>
-      </section>
+  <!-- FINAL CTA -->
+  <div class="final-cta fade-up">
+    <div class="final-cta-glow"></div>
+    <h2 class="display">
+      Join the<br />
+      <em class="display-italic" style="color: var(--rose);">Pilot.</em>
+    </h2>
+    <p>Limited access. Significant data. Entirely yours.</p>
+    <div class="final-cta-form">
+      <input class="hero-input" type="email" placeholder="your@email.com" id="footer-email" />
+      <button class="btn-rose" onclick="handleWaitlist('footer-email')">Access →</button>
+    </div>
+  </div>
 
-    </main>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 EDGE — EmotionOS for Human Connection</p>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+      <a href="#">press@edge.sex</a>
+    </div>
+  </footer>
 
-    <footer class="py-20 border-t border-zinc-900 text-center text-[10px] text-zinc-700 tracking-[0.3em] uppercase font-bold">
-        © 2026 EDGE | The EmotionOS for Human Connection [cite: 20]
-    </footer>
-  </body>
+  <script>
+    // Header scroll state
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Intersection observer for fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Waveform canvas
+    (function() {
+      const canvas = document.getElementById('waveCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height, frame = 0;
+
+      function resize() {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const WAVES = [
+        { freq: 0.018, amp: 0.10, speed: 0.006, alpha: 0.6, lineWidth: 1.5 },
+        { freq: 0.024, amp: 0.06, speed: 0.009, alpha: 0.35, lineWidth: 1 },
+        { freq: 0.012, amp: 0.15, speed: 0.004, alpha: 0.2, lineWidth: 0.75 },
+      ];
+
+      // heartbeat pulse shape
+      function heartbeatY(x, w, h, t, wave) {
+        const progress = (x / w + t * wave.speed) % 1;
+        const base = Math.sin(progress * Math.PI * 2 * w * wave.freq) * wave.amp * h;
+        // add sharp spike every ~0.7 units
+        const pulse = progress % 0.7;
+        let spike = 0;
+        if (pulse < 0.03) spike = pulse / 0.03 * 0.12 * h;
+        else if (pulse < 0.06) spike = (0.06 - pulse) / 0.03 * 0.12 * h;
+        else if (pulse < 0.09) spike = -(pulse - 0.06) / 0.03 * 0.08 * h;
+        else if (pulse < 0.12) spike = -(0.12 - pulse) / 0.03 * 0.08 * h;
+        return h / 2 + base + spike;
+      }
+
+      function drawWave(wave) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(212, 115, 90, ${wave.alpha})`;
+        ctx.lineWidth = wave.lineWidth;
+        for (let x = 0; x <= width; x += 2) {
+          const y = heartbeatY(x, width, height, frame, wave);
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        WAVES.forEach(drawWave);
+        frame++;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Waitlist
+    function handleWaitlist(inputId = null) {
+      const input = inputId
+        ? document.getElementById(inputId)
+        : document.querySelector('.hero-cta .hero-input');
+      const email = input ? input.value.trim() : '';
+      if (!email || !email.includes('@')) {
+        if (input) { input.style.borderColor = 'var(--rose)'; setTimeout(() => input.style.borderColor = '', 1500); }
+        return;
+      }
+      // Replace button with confirmation
+      const btn = input ? input.nextElementSibling : null;
+      if (btn) {
+        btn.textContent = 'On the list ✓';
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--rose)';
+        btn.style.borderColor = 'var(--rose)';
+        btn.disabled = true;
+      }
+      input.value = '';
+      input.placeholder = 'You\'re on the list.';
+    }
+  </script>
+
+</body>
 </html>
