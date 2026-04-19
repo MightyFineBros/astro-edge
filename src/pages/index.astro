@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <style>
+  <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -643,7 +643,6 @@
 
 <body>
 
-  <!-- HEADER -->
   <header id="site-header">
     <a href="/" class="logo">EDG<span>E</span></a>
     <nav>
@@ -654,7 +653,6 @@
     <a href="#" class="btn-outline">Investor Deck</a>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg-text">EDGE</div>
 
@@ -689,7 +687,6 @@
     </div>
   </section>
 
-  <!-- STATS BAR -->
   <div class="stats-bar fade-up">
     <div class="stat">
       <span class="stat-num">57<span>%</span></span>
@@ -709,7 +706,6 @@
     </div>
   </div>
 
-  <!-- VISION -->
   <section id="vision">
     <div class="vision-left fade-up">
       <div class="section-tag mono-label">The Problem</div>
@@ -748,7 +744,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section id="tech">
     <div class="tech-header fade-up">
       <h2 class="display tech-h2">
@@ -789,7 +784,6 @@
     </div>
   </section>
 
-  <!-- PRIVACY -->
   <section id="privacy">
     <div class="fade-up">
       <div class="section-tag mono-label">Privacy by Design</div>
@@ -826,7 +820,6 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
   <div class="final-cta fade-up">
     <div class="final-cta-glow"></div>
     <h2 class="display">
@@ -840,7 +833,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 EDGE — EmotionOS for Human Connection</p>
     <div class="footer-links">
@@ -851,7 +843,7 @@
     </div>
   </footer>
 
-  <script>
+  <script is:inline>
     // Header scroll state
     const hdr = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
