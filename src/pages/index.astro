@@ -9,68 +9,70 @@
     <title>EDGE | The EmotionOS</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-black text-zinc-100 font-sans antialiased">
+  <body class="bg-black text-zinc-100 font-sans antialiased selection:bg-fuchsia-500 selection:text-white">
     
     <header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50 bg-black/80 backdrop-blur-lg border-b border-zinc-900">
       <div class="text-2xl font-bold tracking-tighter uppercase italic">EDGE</div>
-      <nav class="hidden md:flex gap-10 text-xs font-bold tracking-[0.2em] uppercase text-zinc-500">
+      <nav class="hidden md:flex gap-10 text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500">
         <a href="#vision" class="hover:text-fuchsia-500 transition-colors">Vision</a>
         <a href="#tech" class="hover:text-fuchsia-500 transition-colors">The Tech</a>
         <a href="#privacy" class="hover:text-fuchsia-500 transition-colors">Privacy</a>
       </nav>
-      <button class="px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full border border-zinc-800 hover:bg-white hover:text-black transition-all">
+      <button class="px-6 py-2 text-[10px] font-bold uppercase tracking-widest rounded-full border border-zinc-800 hover:bg-white hover:text-black transition-all">
         Investor Deck
       </button>
     </header>
 
     <main class="relative min-h-screen pt-32 px-6">
+      
       <section class="max-w-5xl mx-auto text-center mb-32">
         <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
           THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-cyan-400">EMOTION OS</span> <br /> 
           FOR HUMAN CONNECTION.
         </h1>
         <p class="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-          Bridging the millennia-old <span class="text-white italic">Pleasure Gap</span>[cite: 37, 38]. We decode physiological signals into real-time guidance for synchronized intimacy[cite: 5, 14].
+          Bridging the millennia-old <span class="text-white italic font-medium text-fuchsia-400">Pleasure Gap</span>. We decode physiological signals into real-time guidance for synchronized intimacy.
         </p>
         
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
-          <input type="email" placeholder="access@edge.sex" class="w-full sm:w-80 px-6 py-4 rounded-xl bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-fuchsia-500 transition-colors text-white" />
-          <button class="w-full sm:w-auto px-10 py-4 rounded-xl bg-white text-black font-black uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-24">
+          <input type="email" placeholder="access@edge.sex" class="w-full sm:w-80 px-6 py-4 rounded-xl bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-fuchsia-500 transition-colors text-white placeholder-zinc-600" />
+          <button class="w-full sm:w-auto px-10 py-4 rounded-xl bg-white text-black font-black uppercase tracking-widest hover:bg-fuchsia-500 hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)]">
             Join the Pilot
           </button>
         </div>
 
-        <div class="relative w-full max-w-2xl mx-auto h-4 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
-            <div class="absolute left-1/2 top-0 h-full w-40 -translate-x-1/2 bg-fuchsia-500/20 blur-sm"></div>
-            <div class="absolute left-[48%] top-0 h-full w-1 bg-white shadow-[0_0_15px_#fff] animate-pulse"></div>
+        <div class="relative w-full max-w-2xl mx-auto h-4 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800 shadow-inner">
+            <div class="absolute left-1/2 top-0 h-full w-48 -translate-x-1/2 bg-fuchsia-500/20 blur-md"></div>
+            <div class="absolute left-[48%] top-0 h-full w-1.5 bg-white shadow-[0_0_20px_#fff] animate-pulse"></div>
         </div>
-        <p class="mt-4 text-[10px] tracking-[0.3em] text-zinc-600 uppercase font-bold">Locking into the Pleasure Zone [cite: 49, 56]</p>
+        <p class="mt-6 text-[10px] tracking-[0.4em] text-zinc-600 uppercase font-black">Locking into the Pleasure Zone</p>
       </section>
 
-      <section id="vision" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 py-24 border-t border-zinc-900">
+      <section id="vision" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 py-32 border-t border-zinc-900">
         <div>
-            <h2 class="text-3xl font-bold mb-6">The Data-Driven <br/>Movement [cite: 12, 32]</h2>
-            <p class="text-zinc-400 leading-relaxed mb-6">Modern intimacy relies on guesswork. EDGE transforms wearables into an intelligent interface, translating HRV and GSR signals into actionable feedback[cite: 12, 14].</p>
-            <p class="text-zinc-400 leading-relaxed">By quantifying empathy and synchrony, we aim to reshape the architecture of human communication[cite: 33].</p>
+            <h2 class="text-3xl font-bold mb-8 tracking-tight">The Data-Driven <br/>Movement</h2>
+            <p class="text-zinc-400 leading-relaxed mb-6">Modern intimacy relies on guesswork. EDGE transforms wearables into an intelligent interface, translating HRV and GSR signals into actionable feedback.</p>
+            <p class="text-zinc-400 leading-relaxed">By quantifying empathy and synchrony, we aim to reshape the architecture of human communication.</p>
         </div>
-        <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800">
-            <h3 class="text-fuchsia-500 font-bold uppercase tracking-widest text-xs mb-4">Core Mechanic [cite: 18]</h3>
-            <p class="text-2xl font-bold mb-2 text-white">Time in Zone [cite: 18]</p>
-            <p class="text-sm text-zinc-500 leading-relaxed">Quantifying session success by the duration partners sustain peak mutual pleasure states[cite: 18, 56]. Communication becomes obsolete—the data does the talking[cite: 54].</p>
+        <div class="bg-zinc-900/40 p-10 rounded-3xl border border-zinc-800 backdrop-blur-sm">
+            <h3 class="text-fuchsia-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-6">Core Mechanic</h3>
+            <p class="text-3xl font-bold mb-4 text-white">Time in Zone</p>
+            <p class="text-zinc-500 leading-relaxed text-sm">
+              Quantifying session success by the duration partners sustain peak mutual pleasure states. Communication becomes obsolete—the data does the talking.
+            </p>
         </div>
       </section>
 
-      <section id="privacy" class="max-w-4xl mx-auto py-24 border-t border-zinc-900 text-center">
-        <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-8">Privacy by Design [cite: 24, 55]</h2>
-        <p class="text-3xl md:text-5xl font-bold mb-12 italic text-zinc-200 uppercase tracking-tighter">AES-256 Encryption. <br/>Local Differential Privacy[cite: 23, 55, 56].</p>
-        <p class="text-zinc-500 max-w-2xl mx-auto text-sm leading-relaxed">
-            Only anonymized feature vectors leave the device[cite: 56]. We maintain global regulatory readiness under "wellness communication" standards[cite: 24, 60].
+      <section id="privacy" class="max-w-5xl mx-auto py-32 border-t border-zinc-900 text-center">
+        <h2 class="text-[10px] font-black uppercase tracking-[0.6em] text-zinc-700 mb-10">Privacy by Design</h2>
+        <p class="text-3xl md:text-5xl font-black mb-12 italic text-zinc-100 uppercase tracking-tighter leading-tight">
+          AES-256 Encryption. <br/>Local Differential Privacy.
+        </p>
+        <p class="text-zinc-500 max-w-2xl mx-auto text-sm leading-loose">
+            Only anonymized feature vectors leave the device. We maintain global regulatory readiness under "wellness communication" standards.
         </p>
       </section>
+
     </main>
 
-    <footer class="py-12 border-t border-zinc-900 text-center text-[10px] text-zinc-700 tracking-[0.2em] uppercase">
-        © 2026 EDGE | The EmotionOS for Human Connection [cite: 20]
-    </footer>
-  </body>
-</html>
+    <footer class="py-20 border-t border-zinc-900 text-center text-[10px] text-zinc-700 tracking-[0.3em] uppercase font-bold">
